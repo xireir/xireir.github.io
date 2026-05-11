@@ -24,3 +24,34 @@ html, body {
   padding: 20px;
   background-color: #fff;
 }
+
+.social-columns {
+  display: flex;
+  justify-content: space-around; /* Распределяет столбики равномерно */
+  align-items: flex-start;
+  flex-wrap: wrap; /* Чтобы на мобилках столбики переносились */
+  gap: 20px;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column; /* Выстраивает элементы в столбик */
+  align-items: center;    /* Центрирует иконку и текст */
+  text-align: center;
+  text-decoration: none;  /* Убирает подчеркивание ссылок */
+  color: inherit;         /* Цвет текста как у родителя */
+  width: 120px;           /* Ширина одного столбика */
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #333; /* Цвет кружка-иконки */
+  border-radius: 50%;     /* Делает круглым */
+  margin-bottom: 10px;    /* Отступ до текста */
+}
+
+.social-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
