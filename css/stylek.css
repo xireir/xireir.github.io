@@ -21,7 +21,7 @@ html, body {
   flex: 1;
   padding: 20px;
   background-color: #fff;
-  min-height: 400px; /* Замените 400px на любую нужную вам величину */
+  min-height: 700px; /* Замените 400px на любую нужную вам величину */
 }
 
 .social-columns {
