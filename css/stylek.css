@@ -1,68 +1,26 @@
-/* Обнуляем отступы браузера, чтобы сайт прилегал к краям */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Базовые стили для полного экрана */
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-header { background: #f1f1f1; }
-main   { background: #ffffff; }
-footer { background: #333; color: white; }
-
-/* Настраиваем контейнер (body) */
-body {
-    height: 100%;
-    display: grid;
-    min-height: 100vh; /* Высота на весь экран */
-    
-    grid-template-rows: 8% auto 5%;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Контейнер минимум во всю высоту экрана */
 }
 
-header{
-    display: flex;
-    justify-content: center; /* по горизонтали */
-    align-items: center;     /* по вертикали */
-    height: 100%;    
-    font-size: 200%;
+.header, .footer {
+  /* Задаем минимальную высоту, но разрешаем расти */
+  min-height: 60px;
+  background-color: #f4f4f4;
+  padding: 20px;
 }
 
-main{
-    margin-top: 20px;
-}
-
-.library_buttons{
-    display: flex;
-    flex-direction: column; /* Выстраивает элементы вертикально */
-    align-items: center;    /* Выравнивает кнопки по центру (горизонтально относительно колонки) */
-    gap: 10px;     
-}
-
-.library_buttons a, 
-.library_buttons button {
-    height: 50px;
-    width: 600px; 
-}
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center; 
-    height: 100%;
-}
-
-footer a {
-    /* Чтобы иконки были кликабельными по всей высоте */
-    height: 60%; 
-    display: flex; 
-    align-items: center;
-}
-
-footer img {
-    height: 100%;
-    width: auto;
-    display: block;
-}
-
-body::-webkit-scrollbar {
-  display: none;
+.main {
+  /* Главная область занимает все доступное пространство,
+     но увеличивается, если контента много */
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
 }
