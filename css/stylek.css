@@ -22,7 +22,7 @@ html, body {
   padding: 20px;
   background-color: #fff;
   min-height: 700px; 
-
+}
 .social-columns {
   display: flex;
   flex-direction: row; /* Явно говорим: в ряд */
