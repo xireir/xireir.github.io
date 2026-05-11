@@ -27,11 +27,14 @@ html, body {
 
 .social-columns {
   display: flex;
-  justify-content: space-around; /* Распределяет столбики равномерно */
+  flex-direction: row; /* Явно говорим: в ряд */
+  justify-content: space-around;
   align-items: flex-start;
-  flex-wrap: wrap; /* Чтобы на мобилках столбики переносились */
+  flex-wrap: wrap;
   gap: 20px;
+  width: 100%; /* Занимаем всю ширину футера */
 }
+
 
 .social-item {
   display: flex;
@@ -52,6 +55,7 @@ html, body {
 }
 
 .social-text {
+  display: block; /* Заставляет текст внутри ссылки вставать на новую строку */
   font-size: 14px;
   line-height: 1.4;
 }
