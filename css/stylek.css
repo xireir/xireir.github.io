@@ -14,7 +14,7 @@ html, body {
   /* Задаем минимальную высоту, но разрешаем расти */
   min-height: 60px;
   background-color: #f4f4f4;
-  padding: 20px;
+  padding: 10px;
 }
 
 .main {
@@ -49,12 +49,13 @@ html, body {
   width: 50px;
   height: 50px;
   background-color: #333; /* Цвет кружка-иконки */
-  border-radius: 50%;     /* Делает круглым */
-  margin: 10px 0 10px 0;  /* Отступ до текста */
+  border-radius: 50%;
+  margin: 0px 0 0px 0;/* Делает круглым */
 }
 
 .social-text {
   display: block; /* Заставляет текст внутри ссылки вставать на новую строку */
   font-size: 14px;
   line-height: 1.4;
+  margin: 10px 0 0px 0;
 }
