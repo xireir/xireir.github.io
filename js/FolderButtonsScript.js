@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('.main');
 
     // Путь к файлу с данными (измените, если положите в другое место)
-    const dataUrl = 'foldersButton.json'; 
+    const dataUrl = 'js/foldersButton.json'; 
 
     // Загружаем данные из JSON-файла
     fetch(dataUrl)
