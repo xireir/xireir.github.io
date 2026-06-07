@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Путь изменен: теперь смотрим внутрь папки js
-  fetch('/js/titles.json')
+  fetch('js/titles.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Сетевая ошибка при загрузке заголовков');
