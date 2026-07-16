@@ -1,5 +1,8 @@
 name: Auto-update Buttons List
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
