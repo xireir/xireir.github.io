@@ -1,0 +1,30 @@
+name: Auto-update Buttons List
+
+on:
+  push:
+    paths:
+      - 'pages/**' # Скрипт сработает только если изменилось что-то в папке pages
+
+jobs:
+  update-buttons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run update script
+        run: python sub_shit/update_buttons.py  # <-- Путь исправлен на sub_shit/
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add foldersButton.json
+          # Проверяем, изменился ли файл, чтобы не плодить пустые коммиты
+          git diff-index --quiet HEAD || git commit -m "chore: auto-update buttons list [skip ci]"
+          git push
