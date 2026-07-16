@@ -6,7 +6,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(SCRIPT_DIR)  # Поднимаемся на уровень вверх в корень
 
 PAGES_DIR = os.path.join(BASE_DIR, 'pages')
-JSON_FILE = os.path.join(BASE_DIR, 'foldersButton.json')
+JSON_FILE = os.path.join(BASE_DIR, 'js/foldersButton.json')
 
 
 def main():
