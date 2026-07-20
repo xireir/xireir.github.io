@@ -1,52 +1,57 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Xireir's library</title>
-  <link rel="stylesheet" href="../css/stylek.css">
-  <script src="js/TitleScript.js" defer></script>
-  <script src="js/FolderButtonsScript.js" defer></script>
-</head>
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <h1 id="dynamic-title">Загрузка заголовка...</h1>
-    </header>
-    <main class="main">Main Content</main>
-    <footer class="footer">
-      <div class="social-columns">
+document.addEventListener('DOMContentLoaded', () => {
+    // Находим наш тег <main>, куда будем добавлять кнопки
+    const mainContent = document.querySelector('.main');
 
-        <a href="#" class="social-item">
-          <div class="icon-circle"></div> <!-- Место для иконки -->
-          <span class="social-text">Telegram</span>
-          <span class="social-text">ТГК для бенденьких</span>
-        </a>
+    // Путь к файлу с данными
+    const dataUrl = 'js/foldersButton.json'; 
 
-        <a href="#" class="social-item">
-          <div class="icon-circle"></div>
-          <span class="social-text">SuperTelegram</span>
-          <span class="social-text">ТГК для тех кто может себе позволить меня</span>
-        </a>
+    // Загружаем данные из JSON-файла
+    fetch(dataUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Сетевая ошибка при попытке загрузить список папок');
+        }
+        return response.json();
+    })
+    .then(foldersArray => {
+        // Очищаем дефолтный текст "Main Content", если он там есть
+        mainContent.innerHTML = '';
 
-        <a href="#" class="social-item">
-          <div class="icon-circle"></div>
-          <span class="social-text">KICK</span>
-          <span class="social-text">Весёлые стримчанские время от времени проходят именно здесь</span>
-        </a>
-        <a href="#" class="social-item">
-          <div class="icon-circle"></div>
-          <span class="social-text">YouTube </span>
-          <span class="social-text">Путишествия, обзор машин, мега изобретения и игры. Однажды всё скоплю здесь</span>
-        </a>
+        // Создаем контейнер для кнопок
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.className = 'folder-buttons-container';
 
-        <a href="#" class="social-item">
-          <div class="icon-circle"></div>
-          <span class="social-text">Discord channel</span>
-          <span class="social-text">Лучший канал для тебя и твой друзей!</span>
-        </a>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
+        // Проходим циклом по массиву папок
+        foldersArray.forEach(folderName => {
+            // 1. Создаем элемент кнопки
+            const btn = document.createElement('button');
+            
+            // 2. Добавляем класс для стилизации в CSS
+            btn.className = 'folder-btn';
+            
+            // 3. Записываем внутрь название папки
+            btn.textContent = folderName;
+
+            // 4. Добавляем дата-атрибут: data-folder="название_папки"
+            btn.dataset.folder = folderName;
+
+            // 5. Вешаем обработчик клика
+            btn.addEventListener('click', (event) => {
+                const folder = event.currentTarget.dataset.folder;
+                
+                // Переходим на страницу библиотеки и передаём имя папки в URL
+                window.location.href = `library.html?lib=${encodeURIComponent(folder)}`;
+            });
+
+            // 6. Закидываем кнопку в контейнер
+            buttonsContainer.appendChild(btn);
+        });
+
+        // Добавляем контейнер со всеми кнопками на страницу в тег <main>
+        mainContent.appendChild(buttonsContainer);
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        mainContent.innerHTML = '<p style="color: red;">Не удалось загрузить список папок.</p>';
+    });
+});
